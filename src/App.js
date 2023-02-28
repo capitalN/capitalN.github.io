@@ -108,11 +108,20 @@ function App() {
       </Show>
 
       <Show below="md">
-        <HStack justify={"space-between"}>
+        <HStack
+          justify={"space-between"}
+          position={"fixed"}
+          zIndex={"100"}
+          w="100%"
+          bgColor={"black"}
+          p="10px"
+        >
+          <Heading as={Link} href="#home" fontFamily={"mono"} color="white">
+            NIKHIL
+          </Heading>
           <Button
-            position={"fixed"}
-            right="4"
-            top="4"
+            // right="4"
+            // top="4"
             ref={btnRef}
             onClick={onOpen}
             borderRadius={"full"}
@@ -120,7 +129,6 @@ function App() {
             color="white"
             w="50px"
             h="50px"
-            zIndex={"100"}
           >
             <HamburgerIcon fontSize={"20px"} fontWeight="bold" />
           </Button>
