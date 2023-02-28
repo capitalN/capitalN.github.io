@@ -113,7 +113,7 @@ export default function Projects() {
                     <Text textAlign={"justify"}>{project.desc}</Text>
                   </Stack>
                   <Stack>
-                    <Text fontWeight={"bold"}>contributions</Text>
+                    <Text fontWeight={"bold"}>Contributions</Text>
                     <HStack justify={"center"} flexWrap={"wrap"} gap="5px">
                       {project.contributions.map((el) => (
                         <Badge key={el}>{el}</Badge>
@@ -121,7 +121,7 @@ export default function Projects() {
                     </HStack>
                   </Stack>
                   <Stack>
-                    <Text fontWeight={"bold"}>tech-stack</Text>
+                    <Text fontWeight={"bold"}>Tech-Stack</Text>
                     <HStack justify={"center"}>
                       {project.techStack.map((el) => (
                         <Badge key={el.title} colorScheme={el.color}>

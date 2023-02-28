@@ -24,7 +24,6 @@ export default function About() {
       <Container maxW={"7xl"}>
         <Flex
           direction={"column"}
-          h="100vh"
           align="center"
           justify={"center"}
           textAlign="center"

@@ -56,7 +56,7 @@ function App() {
 
   return (
     <Box>
-      <Show above="sm">
+      <Show above="md">
         <Flex
           as={"header"}
           justify={"space-evenly"}
@@ -107,7 +107,7 @@ function App() {
         </Flex>
       </Show>
 
-      <Show below="sm">
+      <Show below="md">
         <HStack justify={"space-between"}>
           <Button
             position={"fixed"}
