@@ -35,6 +35,7 @@ export const get_repos = () => async (dispatch) => {
     );
     let payload = res.data.data.user.pinnedItems.nodes;
     dispatch({ type: GET_REPOS, payload });
+    console.log(payload);
   } catch (error) {
     console.log(error);
     console.error(error.response.data.message);
