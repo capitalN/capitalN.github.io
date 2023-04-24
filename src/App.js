@@ -1,199 +1,174 @@
-// ChakraUI
+import "./App.css";
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
 import {
   Box,
-  Heading,
-  HStack,
-  Stack,
-  Text,
-  VStack,
+  Button,
+  Center,
   Flex,
-  Show,
-  Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  useDisclosure,
+  Grid,
+  Heading,
+  Hide,
+  Icon,
   Link,
-  Image,
+  Tooltip,
 } from "@chakra-ui/react";
+import ScrollspyNav from "react-scrollspy-nav";
+import About from "./pages/About";
+import Skills from "./pages/Skills";
+import Contact from "./pages/Contact";
+import {
+  TiHome,
+  TiUser,
+  TiCode,
+  TiImage,
+  TiPhone,
+  TiSocialGithub,
+  TiSocialLinkedin,
+  TiPhoneOutline,
+  TiMail,
+} from "react-icons/ti";
+import { useEffect } from "react";
+import ResumeButton from "./components/ResumeButton";
 
-// Components
-import Footer from "./components/Footer";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import About from "./components/About";
-import Home from "./components/Home";
-import Skills from "./components/Skills";
-
-// AOS
-import AOS from "aos";
-import "aos/dist/aos.css";
-
-// React
-import { useEffect, useRef } from "react";
-
-// Icons
-import { TiThMenu } from "react-icons/ti";
-
-// Styles
-import { bgFontStyle } from "./components/styles";
-
-
-// Code
-export default function App({ data, repo }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = useRef();
-
-  const LINKS = [
-    { to: "#", title: "Home" },
-    { to: "#about", title: "About" },
-    { to: "#skills", title: "Skills" },
-    { to: "#projects", title: "Projects" },
-    { to: "#contact", title: "Contact" },
-  ];
-
-  useEffect(() => {
-    AOS.init({
-      disable: "mobile",
-    });
-  }, []);
+export default function App() {
+  const activeLinkStyles = {
+    color: "blue",
+  };
 
   return (
-    <VStack
-      color={"gray.300"}
-      bgColor={"black"}
-      // gap={{ base: "30px", sm: "40px", md: "50px", lg: "60px" }}
-      gap="50px"
-      textAlign="center"
-      p={{ base: "0 15px", sm: "0 20px", md: "0 30px", lg: "0 40px" }}
-      overflowX={"hidden"}
-      transform="0.2s ease"
-    >
-      <Box
-        fontWeight={"bold"}
-        position={"fixed"}
-        top="0"
-        w={"100%"}
-        p="10px 20px"
-        zIndex={100}
-        background="linear-gradient(180deg, black 10%, rgba(0,0,0,0) 100%)"
-        // id="navbar"
+    <Box textAlign={"justify"} bgColor="gray.100">
+      <ScrollspyNav
+        scrollTargetIds={["about", "skills", "projects", "contact"]}
+        activeNavClass="is-active"
+        scrollDuration="1000"
+        headerBackground="true"
+        headerHeight="50"
       >
-        <Show above="md">
-          <HStack justify="space-between" align="center">
-            <a href="#">
-              <Image src="/nik.png" alt="LOGO" width={"100px"} opacity="0.7" />
-            </a>
-            <Flex w={"50%"} justify="space-between">
-              {LINKS.map((link) => (
-                <a href={link.to} key={link.to}>
-                  {link.title}
-                </a>
-              ))}
-            </Flex>
-            <Heading
+        <Grid
+          position={"fixed"}
+          top={{ lg: "0" }}
+          bottom={{ base: "0%", lg: "auto" }}
+          gridTemplateColumns={{ base: "repeat(5,1fr)", lg: "repeat(6,1fr)" }}
+          w="100%"
+          textAlign={"center"}
+          bgColor="gray.100"
+          zIndex={1001}
+          id="navbar"
+          alignItems={"center"}
+          justifyItems="center"
+        >
+          <Button
+            as={Link}
+            href="#"
+            fontSize={"40px"}
+            _hover={{ textDecoration: "none" }}
+          >
+            na
+          </Button>
+          {NavLinks.map(({ name, href, icon }) => (
+            <Button
+              key={name}
               as={Link}
-              href="https://drive.google.com/u/0/uc?id=1GtZiQIVtAi8ap6WSe38hKNHeB_c4T4eg&export=download"
-              fontWeight="bold"
-              size={"lg"}
-              fontFamily="inherit"
-              onClick={() =>
-                window.open(
-                  "https://drive.google.com/file/d/1GtZiQIVtAi8ap6WSe38hKNHeB_c4T4eg/view",
-                  "_blank"
-                )
-              }
+              href={href}
+              sx={{ "&.is-active": activeLinkStyles }}
+              borderRadius={"0"}
+              h="60px"
+              gap="10px"
+              _hover={{ textDecoration: "none" }}
             >
-              RESUME {">"}
-            </Heading>
-          </HStack>
-        </Show>
+              <Icon as={icon} fontSize="30px" />
+              <Hide below="md">{name}</Hide>
+            </Button>
+          ))}
+          <Hide below="lg">
+            <ResumeButton />
+          </Hide>
+        </Grid>
+      </ScrollspyNav>
 
-        <Show below="md">
-          <Flex justify={"space-between"}>
-            <a href="#" fontWeight="bold">
-              <Image src="/nik.png" alt="LOGO" width={"75px"} opacity="0.7" />
-            </a>
-            <TiThMenu
-              ref={btnRef}
-              onClick={onOpen}
-              size="30px"
-              style={{ margin: "4px" }}
-            />
-            <Drawer
-              isOpen={isOpen}
-              placement="top"
-              onClose={onClose}
-              finalFocusRef={btnRef}
-            >
-              <DrawerOverlay />
-              <DrawerContent bgColor={"gray.900"}>
-                <Stack w="100%" h="100%" bgColor={" rgba(23,25,35, 0.6)"}>
-                  <DrawerCloseButton color={"white"} />
-                  <Flex justify={"center"} p="10px">
-                    <a href="#" fontWeight="bold" onClick={onClose}>
-                      <Image
-                        src="/nik.png"
-                        alt="LOGO"
-                        width={"100px"}
-                        opacity="0.7"
-                      />
-                    </a>
-                  </Flex>
-
-                  <DrawerBody>
-                    <Stack gap="10px">
-                      {LINKS.map((link) => (
-                        <Link href={link.to} key={link.to} onClick={onClose}>
-                          <Text fontWeight={"bold"} color="gray.300">
-                            {link.title}
-                          </Text>
-                        </Link>
-                      ))}
-                    </Stack>
-                  </DrawerBody>
-                </Stack>
-              </DrawerContent>
-            </Drawer>
-          </Flex>
-        </Show>
-      </Box>
-
-      <Box
-        position={"relative"}
-        bgImage={{ base: "spaceShip.jpg" }}
-        backgroundRepeat="no-repeat"
-        backgroundSize="cover"
-        bgPosition={"center"}
-        w="100vw"
-        h="100vh"
-        id="#"
+      <Flex
+        direction={"column"}
+        position={"fixed"}
+        top="60%"
+        right={"0"}
+        zIndex="100"
       >
-        <Home />
+        {SocialLinks.map(({ name, href, icon, colorScheme }) => (
+          <Tooltip label={name} placement="left" key={name}>
+            <Button
+              as={Link}
+              href={href}
+              boxSize="50px"
+              target="_blank"
+              colorScheme={colorScheme}
+              variant="ghost"
+            >
+              <Icon as={icon} fontSize="25px" />
+            </Button>
+          </Tooltip>
+        ))}
+      </Flex>
+
+      <Box style={{ scrollSnapType: "y mandatory", overflow: "auto" }}>
+        <Center
+          minH={"100vh"}
+          p="40px"
+          id="home"
+          bgImage="https://images.pexels.com/photos/2524873/pexels-photo-2524873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          bgRepeat="no-repeat"
+          bgSize={"cover"}
+          bgPosition="center"
+        >
+          <Home />
+        </Center>
+        <Center p="60px 10px" id="about">
+          <About />
+        </Center>
+        <Center id="skills" p="40px">
+          <Skills />
+        </Center>
+        <Box p="40px 10px" id="projects">
+          <Projects />
+        </Box>
+        <Center id="contact" p="40px 10px" minH={"100vh"}>
+          <Contact />
+        </Center>
       </Box>
-
-      {/* <p id="about"></p> */}
-      <VStack position={"relative"} id="about">
-        <Heading {...bgFontStyle}>ABOUT</Heading>
-        <About />
-      </VStack>
-
-      {/* <p id="skills"></p> */}
-      <VStack position={"relative"} id="skills">
-        <Heading {...bgFontStyle}>SKILLS</Heading>
-        <Skills />
-      </VStack>
-
-      {/* <p id="projects"></p> */}
-      <VStack position={"relative"} id="projects">
-        <Heading {...bgFontStyle}>PROJECTS</Heading>
-        <Projects />
-      </VStack>
-      <Box id="contact" zIndex={101}>
-        <Contact />
-      </Box>
-    </VStack>
+    </Box>
   );
 }
+
+export let SocialLinks = [
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/nikhil-angolkar-62722a19b/",
+    icon: TiSocialLinkedin,
+    colorScheme: "linkedin",
+  },
+  {
+    name: "Email",
+    href: "mailto:angolkarnikhil@gmail.com",
+    icon: TiMail,
+    colorScheme: "red",
+  },
+  {
+    name: "Call",
+    href: "tel: 7795334086",
+    icon: TiPhoneOutline,
+    colorScheme: "whatsapp",
+  },
+  {
+    name: "Github",
+    href: "https://github.com/capitalN",
+    icon: TiSocialGithub,
+    colorScheme: "purple",
+  },
+];
+
+export let NavLinks = [
+  { name: "About", href: "#about", icon: TiUser },
+  { name: "Skills", href: "#skills", icon: TiCode },
+  { name: "Projects", href: "#projects", icon: TiImage },
+  { name: "Contact", href: "#contact", icon: TiPhone },
+];
