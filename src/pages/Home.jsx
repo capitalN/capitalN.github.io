@@ -1,6 +1,7 @@
-import { Center, Container, Heading, VStack } from "@chakra-ui/react";
+import { Heading, VStack } from "@chakra-ui/react";
 import React from "react";
 import ResumeButton from "../components/ResumeButton";
+import { Brand } from "../utils/Theme";
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
           full stack web developer
         </Heading>
         <br />
-        <ResumeButton />
+        <ResumeButton bgColor={Brand.primary[0]} color={Brand.secondary[0]} />
         <br />
       </VStack>
     </VStack>

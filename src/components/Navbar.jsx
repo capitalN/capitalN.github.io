@@ -1,31 +1,15 @@
 import {
   Box,
   Stack,
-  Drawer,
-  DrawerBody,
-  DrawerOverlay,
-  DrawerContent,
-  useDisclosure,
   Button,
   Link,
-  Hide,
   Show,
-  VStack,
-  Divider,
   Heading,
   Grid,
   Icon,
-  Text,
 } from "@chakra-ui/react";
 import React from "react";
-import {
-  TiCode,
-  TiHome,
-  TiImage,
-  TiPhone,
-  TiThMenu,
-  TiUser,
-} from "react-icons/ti";
+import { TiCode, TiHome, TiImage, TiPhone, TiUser } from "react-icons/ti";
 import { Brand } from "../utils/Theme";
 import ResumeButton from "./ResumeButton";
 import ScrollspyNav from "react-scrollspy-nav";
@@ -72,7 +56,7 @@ export default function Navbar() {
 function NavLinks() {
   const activeLinkStyles = {
     background: "rgba(0, 0, 0, 0.2)",
-    fontSize:"22px",
+    fontSize: "22px",
   };
   return (
     <ScrollspyNav

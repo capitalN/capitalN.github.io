@@ -1,14 +1,17 @@
-import { Button, Link, Stack } from "@chakra-ui/react";
+import { Button, Link } from "@chakra-ui/react";
 import React from "react";
 import { Brand } from "../utils/Theme";
 
-export default function ResumeButton() {
+export default function ResumeButton({
+  bgColor = Brand.secondary[0],
+  color = Brand.primary[0],
+}) {
   return (
     <>
       <Button
         colorScheme={""}
-        bgColor={Brand.secondary[0]}
-        color={Brand.primary[0]}
+        bgColor={bgColor}
+        color={color}
         h="50px"
         w="100%"
         as={Link}

@@ -2,8 +2,6 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import React from "react";
 import {
-  Box,
-  Flex,
   Heading,
   HStack,
   Stack,
