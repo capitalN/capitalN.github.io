@@ -1,53 +1,78 @@
 import {
-  Center,
+  Box,
+  Button,
+  ButtonGroup,
+  Grid,
+  GridItem,
+  Heading,
+  HStack,
+  Icon,
+  Image,
   Input,
+  Link,
   Stack,
   Text,
   Textarea,
-  VStack,
-  Link,
-  Heading,
-  Box,
-  Button,
-  Flex,
-  Tooltip,
-  Icon,
 } from "@chakra-ui/react";
 import React from "react";
-import { SocialLinks } from "../App";
-import { ButtonStyle } from "../utils/globalCSS";
+import {
+  TiSocialLinkedin,
+  TiSocialGithub,
+  TiPhoneOutline,
+  TiMail,
+} from "react-icons/ti";
+import { links } from "../components/Navbar";
+import { Brand } from "../utils/Theme";
 
 export default function Contact() {
   return (
-    <Box>
-      <Flex
-        boxShadow={"xl"}
-        borderRadius="10px"
-        bgColor={"white"}
-        direction={{ base: "column", md: "row" }}
+    <Box bgColor={Brand.primary[500]} color="white" p="40px">
+      <Grid
+        gridTemplateColumns={{
+          base: "repeat(1, 1fr)",
+          sm: "repeat(1, 1fr)",
+          md: "repeat(2, 1fr)",
+        }}
+        gap="40px"
       >
-        <Stack w="350px" p="20px" bgColor={"gray.50"} justify="space-between">
-          <Heading>Contact</Heading>
-          <Stack fontWeight="bold" fontSize={"20px"}>
-            <Text>Nikhil Angolkar</Text>
-            <Text>Belgaum, Karnataka</Text>
+        <Stack gap="20px" justify={"space-around"}>
+          <Stack>
+            <Heading fontFamily={"inherit"}>nikhil angolkar</Heading>
             <Text>angolkarnikhil@gmail.com</Text>
             <Text>+91 7795334086</Text>
+            <Text>Nikhil Angolkar | LinkedIN</Text>
+            <Text>Belgaum, Karnataka</Text>
           </Stack>
 
-          <Flex direction={"row"} w="100%" justify={"space-between"}>
-            {SocialLinks.map(({ name, href, icon, colorScheme }) => (
-              <Button as={Link} href={href} boxSize="50px" target="_blank" variant={"outline"} colorScheme={colorScheme}>
-                <Icon as={icon} fontSize="30px" />
+          <ButtonGroup colorScheme={""}>
+            {SocialLinks.map(({ icon, name, href }, i) => (
+              <Button
+                boxSize="50px"
+                key={i}
+                as={Link}
+                href={href}
+                bgColor={Brand.secondary[0]}
+                color={Brand.primary[0]}
+              >
+                <Icon as={icon} boxSize={"30px"} />
               </Button>
             ))}
-          </Flex>
+          </ButtonGroup>
+
+          <HStack gap="10px">
+            {links.map((link) => (
+              <Link href={`#${link}`} key={link}>
+                {link}
+              </Link>
+            ))}
+          </HStack>
         </Stack>
+
         <form
           action="https://formsubmit.co/angolkarnikhil@gmail.com"
           method="POST"
         >
-          <Stack p="20px" w="350px">
+          <Stack p="20px">
             <Text>Name</Text>
             <Input required name="name" class="form-control" type={"text"} />
             <br />
@@ -58,15 +83,46 @@ export default function Contact() {
             <Textarea class="form-control" required name="message"></Textarea>
             <br />
             <button type="submit" class="btn btn-lg btn-dark btn-block">
-              <Button colorScheme={"messenger"} w="100%">
+              <Button
+                colorScheme={""}
+                w="100%"
+                height={"50px"}
+                bgColor={Brand.secondary[0]}
+                color={Brand.primary[0]}
+              >
                 SEND
               </Button>
             </button>
           </Stack>
         </form>
-      </Flex>
-
-      <br />
+      </Grid>
     </Box>
   );
 }
+
+export let SocialLinks = [
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/nikhil-angolkar-62722a19b/",
+    icon: TiSocialLinkedin,
+    colorScheme: "linkedin",
+  },
+  {
+    name: "Email",
+    href: "mailto:angolkarnikhil@gmail.com",
+    icon: TiMail,
+    colorScheme: "red",
+  },
+  {
+    name: "Call",
+    href: "tel: 7795334086",
+    icon: TiPhoneOutline,
+    colorScheme: "whatsapp",
+  },
+  {
+    name: "Github",
+    href: "https://github.com/capitalN",
+    icon: TiSocialGithub,
+    colorScheme: "purple",
+  },
+];

@@ -3,6 +3,7 @@ import {
   Center,
   Flex,
   Grid,
+  HStack,
   Icon,
   Image,
   Stack,
@@ -27,7 +28,6 @@ import {
   SiGithub,
 } from "react-icons/si";
 import GitHubCalendar from "react-github-calendar";
-import { brand } from "../utils/globalCSS";
 
 export default function Skills() {
   let skills = [
@@ -43,65 +43,59 @@ export default function Skills() {
     { icon: SiReactrouter, title: "ReactRouter", color: "red" },
     { icon: SiRedux, title: "Redux", color: "purple" },
     { icon: SiChakraui, title: "ChakraUI", color: "teal" },
-    { icon: SiVisualstudiocode, title: "VisualStudio", color: "#0078d7" },
+    { icon: SiVisualstudiocode, title: "VS Code", color: "#0078d7" },
     { icon: SiGithub, title: "Github", color: "black" },
   ];
 
   const blockSize = useBreakpointValue({ base: 10, sm: 15, md: 20, lg: 25 });
 
   return (
-    <Stack w="100%" textAlign={"center"}>
+    <Stack textAlign={"center"} gap="20px">
       <Grid
         gridTemplateColumns={{
-          base: "repeat(auto-fit, minmax(100px, 1fr))",
-          md: "repeat(auto-fit, minmax(210px, 1fr))",
+          base: "repeat(2,1fr)",
+          md: "repeat(3,1fr)",
+          lg: "repeat(5,1fr)",
         }}
-        h="100%"
-        gap="25px"
+        gap="10px"
       >
         {skills.map(({ icon, title, color }) => (
-          <Center
-            key={title}
-            h={{ base: "150px", md: "210px" }}
-            bgColor={"white"}
-            color="black"
-            boxShadow="lg"
-          >
-            <Stack>
-              <Icon as={icon} color={color} boxSize="5em" />
-              <Text fontWeight={"bold"}>{title}</Text>
-            </Stack>
-          </Center>
+          <HStack bgColor={"white"} gap="10px" p="10px">
+            <Icon as={icon} color={color} boxSize="50px" />
+            <Text fontWeight={"bold"}>{title}</Text>
+          </HStack>
         ))}
       </Grid>
-      <br />
-      <br />
-      <Stack
-        direction={"row"}
-        w="100%"
-        justify="space-evenly"
-        gap={"20px"}
-        flexWrap={"wrap"}
+
+      <Grid
+        gridTemplateColumns={{
+          base: "repeat(1,1fr)",
+          md: "repeat(2,1fr)",
+          lg: "repeat(3,1fr)",
+        }}
+        gap="20px"
       >
-        <Image
-          src="https://github-readme-stats.vercel.app/api?username=capitalN&show_icons=true&locale=en&hide_border=true&include_all_commits=true&count_private=true"
-          w="400px"
+        {Stats.map((image) => (
+          <Box bgColor={"white"} key={image}>
+            <Image width="100%" src={image} alt="stats" height={"auto"} />
+          </Box>
+        ))}
+      </Grid>
+
+      <Box p="10px" bgColor={"white"}>
+        <GitHubCalendar
+          username="capitalN"
+          blockSize={blockSize}
+          colorScheme="light"
         />
-        <Image
-          src="https://github-readme-stats.vercel.app/api/top-langs?username=capitalN&show_icons=true&locale=en&layout=compact&hide_border=true&include_all_commits=true&count_private=true"
-          w="400px"
-        />
-        <Image
-          src="https://github-readme-streak-stats.herokuapp.com/?user=arun24hrs&hide_border=true&include_all_commits=true&count_private=true"
-          w="400px"
-        />
-      </Stack>
-      <br />
-      <br />
-      <Box p="10px" boxShadow={"lg"} bgColor="white">
-        <GitHubCalendar username="capitalN" blockSize={blockSize} />
         <Text fontWeight={"bold"}>Github Calendar</Text>
       </Box>
     </Stack>
   );
 }
+
+let Stats = [
+  "https://github-readme-stats.vercel.app/api?username=capitalN&show_icons=true&locale=en&hide_border=true&include_all_commits=true&count_private=true",
+  "https://github-readme-stats.vercel.app/api/top-langs?username=capitalN&show_icons=true&locale=en&layout=compact&hide_border=true&include_all_commits=true&count_private=true",
+  "https://github-readme-streak-stats.herokuapp.com/?user=arun24hrs&hide_border=true&include_all_commits=true&count_private=true",
+];
