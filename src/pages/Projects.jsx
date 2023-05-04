@@ -36,6 +36,13 @@ export default function Projects() {
 
   return (
     <Stack justify="center">
+      <Heading
+        textAlign={"center"}
+        fontFamily="inherit"
+        color={Brand.primary[0]}
+      >
+        Projects
+      </Heading>
       <Carousel responsive={responsive} infinite={false}>
         {data.map(
           (
@@ -79,7 +86,7 @@ export default function Projects() {
                     </Button>
                   </ButtonGroup>
                 </HStack>
-                <Text>{description}</Text>
+                <Text textAlign={"justify"}>{description}</Text>
 
                 <ButtonGroup variant="outline" flexWrap={"wrap"} gap="5px 0">
                   <Text fontWeight={"bold"} color={Brand.primary[500]}>
@@ -109,9 +116,42 @@ export default function Projects() {
 
 let data = [
   {
+    name: "UpStyles",
+    description:
+      "Upstyles is a clone of Moodsence.com that offers fashion and lifestyle products, a popular e-commerce platform. This project was a team effort of four developers, including myself. I was in charge of creating the Navbar, the Products Page, the Search functionality, the Filters and the Cart section. ",
+    image:
+      "https://user-images.githubusercontent.com/107465553/235299099-63eb9f33-0b82-4012-bf22-e14b68832542.png",
+    url: "https://github.com/kaushalragini/pushy-dime-8312",
+    homepageUrl: "https://upstylesss.netlify.app",
+    techStack: [
+      "HTML",
+      "CSS",
+      "JS",
+      "React",
+      "Chakra-UI",
+      "Redux",
+      "RouterDom",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+    ],
+    features: [
+      "Signup",
+      "Login",
+      "Navbar",
+      "Footer",
+      "Products",
+      "Filter",
+      "Search",
+      "Sort",
+      "Pagination",
+      "Cart",
+    ],
+  },
+  {
     name: "Dermstore",
     description:
-      "DermStore, an online platform that offers various beauty products and personal care items for women. I built this project in 5 days as an individual assignment for the Masai School construct week.",
+      "DermStore is a  clone of DermStore.com, a website that sells beauty and personal care products for women. I created this project in 5 days as a solo task for the Masai School construct week.",
     image:
       "https://user-images.githubusercontent.com/107465553/233631000-0487b844-126d-460c-a84d-3f5f3295319c.png",
     url: "https://github.com/capitalN/dermstore",
@@ -137,13 +177,13 @@ let data = [
       "Sort",
       "Navbar",
       "Footer",
-      "Screen Responsive",
+      "Screen Responsiveness",
     ],
   },
   {
     name: "Cult.fit",
     description:
-      "This project is a clone of Cult.fit, a website that offers various fitness services and products. It was created in 5 days as part of the Masai School construct week. This is an Individual Project.",
+      "This Project is a replica of Cult.fit, a popular fitness platform. I built this project solo in less than a week for the Masai School construct week challenge. The project showcases various fitness services and products offered by Cult.fit.",
     image:
       "https://user-images.githubusercontent.com/107465553/226364961-0af7eb3f-3854-4109-b9c4-bcaccf4b9dff.png",
     url: "https://github.com/capitalN/cult.fit",
@@ -165,7 +205,7 @@ let data = [
       "animations",
       "Navbar",
       "Footer",
-      "Screen Responsive",
+      "Screen Responsiveness",
     ],
   },
   {
@@ -192,7 +232,7 @@ let data = [
       "Pagination",
       "Navbar",
       "Footer",
-      "Screen Responsive",
+      "Screen Responsiveness",
     ],
   },
 ];

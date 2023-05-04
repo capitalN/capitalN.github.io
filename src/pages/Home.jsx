@@ -17,7 +17,7 @@ export default function Home() {
           full stack web developer
         </Heading>
         <br />
-        <ResumeButton bgColor={Brand.primary[0]} color={Brand.secondary[0]} />
+        <ResumeButton bgColor={Brand.primary[0]} color={"white"} />
         <br />
       </VStack>
     </VStack>

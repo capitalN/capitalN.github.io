@@ -1,6 +1,7 @@
 import {
   Box,
   Grid,
+  Heading,
   HStack,
   Icon,
   Image,
@@ -26,6 +27,7 @@ import {
   SiGithub,
 } from "react-icons/si";
 import GitHubCalendar from "react-github-calendar";
+import { Brand } from "../utils/Theme";
 
 export default function Skills() {
   let skills = [
@@ -49,6 +51,13 @@ export default function Skills() {
 
   return (
     <Stack textAlign={"center"} gap="20px">
+      <Heading
+        textAlign={"center"}
+        fontFamily="inherit"
+        color={Brand.primary[0]}
+      >
+        Skills
+      </Heading>
       <Grid
         gridTemplateColumns={{
           base: "repeat(2,1fr)",

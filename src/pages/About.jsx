@@ -20,8 +20,9 @@ export default function About() {
       gap="40px"
       bgColor={"white"}
       textAlign="left"
+      p="20px 0"
     >
-      <Center>
+      <Center p="10px">
         <Image
           // width={"100%"}
           m="40px 0"
@@ -52,7 +53,9 @@ export default function About() {
                 color={Brand.primary[500]}
                 bgColor={Brand.secondary[500]}
               />
-              <Text>{description}</Text>
+              <Text maxW={"400px"} textAlign="justify">
+                {description}
+              </Text>
             </HStack>
           ))}
         </Stack>

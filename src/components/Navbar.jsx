@@ -55,7 +55,7 @@ export default function Navbar() {
 
 function NavLinks() {
   const activeLinkStyles = {
-    background: "rgba(0, 0, 0, 0.2)",
+    background: "rgba(0, 0, 0, 0.3)",
     fontSize: "22px",
   };
   return (
